@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Floorball Stick — Player Survey</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins+Condensed:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --accent:#B8964E; --accent-dark:#9A7A3E; --accent-glow:rgba(184,150,78,.18);
@@ -21,22 +21,16 @@ body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(-
 /* ---- Hero ---- */
 header{background:var(--card);padding:48px 20px 36px;text-align:center}
 .hero{max-width:720px;margin:0 auto}
-.hero .eyebrow{font-family:'Poppins Condensed';font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-.hero h1{font-family:'Poppins Condensed';font-weight:800;font-size:clamp(30px,6vw,48px);color:var(--white);line-height:1.08;margin-bottom:16px}
+.hero .eyebrow{font-family:'Poppins';font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.hero h1{font-family:'Poppins';font-weight:800;font-size:clamp(30px,6vw,48px);color:var(--white);line-height:1.08;margin-bottom:16px}
 .hero .sub{color:var(--muted);font-size:15px;max-width:540px;margin:0 auto 20px}
-.pill{display:inline-block;background:var(--bg);border:1px solid var(--card-border);border-radius:999px;padding:8px 22px;font-family:'Poppins Condensed';font-weight:600;font-size:14px;letter-spacing:.6px;color:var(--white)}
+.pill{display:inline-block;background:var(--bg);border:1px solid var(--card-border);border-radius:999px;padding:8px 22px;font-family:'Poppins';font-weight:600;font-size:14px;letter-spacing:.6px;color:var(--white)}
 
-/* ---- Progress ---- */
-.progress-wrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:0 20px}
-.progress-inner{max-width:780px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:6px 0}
-.progress-bar{flex:1;height:4px;background:var(--card-border);border-radius:4px;overflow:hidden}
-.progress-bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:4px;transition:width .25s}
-.progress-pct{font-size:12px;color:var(--muted);white-space:nowrap;min-width:70px;text-align:right}
 
 /* ---- Sections ---- */
 section{background:var(--card);border:1px solid var(--card-border);border-radius:16px;margin-top:24px;padding:28px 24px 30px;scroll-margin-top:40px}
-.sec-label{font-family:'Poppins Condensed';font-weight:700;font-size:13px;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-.sec-title{font-family:'Poppins Condensed';font-weight:800;font-size:24px;color:var(--white);margin-bottom:4px}
+.sec-label{font-family:'Poppins';font-weight:700;font-size:13px;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.sec-title{font-family:'Poppins';font-weight:800;font-size:24px;color:var(--white);margin-bottom:4px}
 .sec-sub{color:var(--muted);font-size:14px;margin-bottom:20px}
 
 label.f{display:block;font-weight:600;font-size:14px;margin:18px 0 8px;color:var(--ink)}
@@ -71,7 +65,7 @@ select option{background:var(--bg);color:var(--ink)}
 .spider-grid{display:grid;grid-template-columns:1fr;gap:28px}
 .spider-card{width:100%;border:1px solid var(--card-border);border-radius:14px;padding:24px 18px 20px;text-align:center}
 .spider-card.wide{grid-column:auto;max-width:none;margin:0}
-.spider-cat{font-family:'Poppins Condensed';font-weight:700;font-size:21px;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);margin-bottom:10px}
+.spider-cat{font-family:'Poppins';font-weight:700;font-size:21px;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);margin-bottom:10px}
 .spider-svg{display:block;width:100%;max-width:520px;height:auto;margin:0 auto}
 .spider-svg .grid-line{fill:none;stroke:var(--card-border);stroke-width:1.2}
 .spider-svg .axis-line{stroke:var(--card-border);stroke-width:.7}
@@ -91,7 +85,7 @@ select option{background:var(--bg);color:var(--ink)}
 /* ---- Stick marker ---- */
 .stick-box{position:relative;border:1.5px solid var(--card-border);border-radius:12px;overflow:hidden;background:var(--bg);cursor:crosshair;touch-action:manipulation}
 .stick-box img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
-.xmark{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:var(--mark);color:#fff;font-family:'Poppins Condensed';font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.5);cursor:pointer;border:2px solid #fff}
+.xmark{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:var(--mark);color:#fff;font-family:'Poppins';font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.5);cursor:pointer;border:2px solid #fff}
 .mark-list{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;min-height:30px}
 .mark-pill{background:rgba(230,62,46,.15);border:1px solid rgba(230,62,46,.35);color:#F5A3A0;border-radius:999px;font-size:13px;padding:5px 12px;display:flex;gap:8px;align-items:center}
 .mark-pill button{border:none;background:none;color:#F5A3A0;font-weight:700;cursor:pointer;font-size:14px}
@@ -105,13 +99,13 @@ select option{background:var(--bg);color:var(--ink)}
 .tcard{border:1.5px solid var(--card-border);border-radius:12px;padding:16px 14px;cursor:pointer;background:transparent;text-align:left;font:inherit;color:var(--ink);transition:.12s;display:flex;flex-direction:column;gap:6px}
 .tcard:hover{border-color:var(--accent)}
 .tcard.on{border-color:var(--accent);background:var(--accent-glow)}
-.tcard .t{font-family:'Poppins Condensed';font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:.4px;color:var(--white)}
+.tcard .t{font-family:'Poppins';font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:.4px;color:var(--white)}
 .tcard .price{font-weight:600;font-size:14px;color:var(--accent)}
 .tcard .d{font-size:13.5px;color:var(--muted)}
 
 /* ---- Submit ---- */
 .submit-row{margin-top:30px;text-align:center}
-#send{background:var(--accent);color:var(--white);border:none;border-radius:12px;font-family:'Poppins Condensed';font-weight:700;font-size:20px;letter-spacing:1px;text-transform:uppercase;padding:16px 52px;cursor:pointer;transition:.15s}
+#send{background:var(--accent);color:var(--white);border:none;border-radius:12px;font-family:'Poppins';font-weight:700;font-size:20px;letter-spacing:1px;text-transform:uppercase;padding:16px 52px;cursor:pointer;transition:.15s}
 #send:hover{background:var(--accent-dark)}
 #send:disabled{opacity:.6;cursor:wait}
 #err{color:var(--mark);font-size:14px;margin-top:10px;display:none}
@@ -119,7 +113,7 @@ select option{background:var(--bg);color:var(--ink)}
 /* ---- Success ---- */
 #done{display:none;text-align:center;padding:70px 20px}
 #done .ok-ico{width:76px;height:76px;border-radius:50%;background:var(--ok);color:#fff;font-size:38px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
-#done h2{font-family:'Poppins Condensed';font-weight:800;font-size:34px;text-transform:uppercase;color:var(--white)}
+#done h2{font-family:'Poppins';font-weight:800;font-size:34px;text-transform:uppercase;color:var(--white)}
 #done p{color:var(--muted);margin-top:8px;font-size:16px}
 footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:30px}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 16px}
@@ -134,17 +128,9 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:30px}
     <div class="eyebrow">Player Requirements Survey</div>
     <h1>Help us build the perfect floorball stick.</h1>
     <p class="sub">Only questions that directly guide shaft design: flex, balance, feel, durability and failure locations.</p>
-    <span class="pill">&asymp; 3 minutes &middot; mostly one-click answers</span>
-  </div>
+</div>
 </header>
 
-<!-- PROGRESS -->
-<div class="progress-wrap">
-  <div class="progress-inner">
-    <div class="progress-bar"><i id="barFill"></i></div>
-    <span class="progress-pct" id="pctLabel">0 % complete</span>
-  </div>
-</div>
 
 <div class="wrap">
 <form id="form" onsubmit="return false">
@@ -154,6 +140,18 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:30px}
   <div class="sec-label">Section 1 / 5</div>
   <div class="sec-title">Your game</div>
   <p class="sec-sub">We use this to understand what your feedback is based on.</p>
+
+  <div class="grid3">
+    <div><label class="f">Age</label><input type="number" name="age" min="5" max="100" inputmode="numeric" placeholder="Years"></div>
+    <div><label class="f">Height (cm)</label><input type="number" name="height_cm" min="100" max="250" inputmode="numeric" placeholder="cm"></div>
+    <div><label class="f">Weight (kg)</label><input type="number" name="weight_kg" min="25" max="200" step="0.1" inputmode="decimal" placeholder="kg"></div>
+  </div>
+
+  <label class="f">Dominant hand</label>
+  <div class="radio-grid" data-radio="dominant_hand">
+    <button type="button" class="radio-card" data-v="Left"><span class="dot"></span>Left</button>
+    <button type="button" class="radio-card" data-v="Right"><span class="dot"></span>Right</button>
+  </div>
 
   <label class="f">Your main position</label>
   <div class="radio-grid" data-radio="position">
@@ -352,7 +350,7 @@ const SPIDER_CATS = [
 function buildSpider(cat){
   const container = document.getElementById(cat.id);
   const n = cat.items.length;
-  const size = 480, cx = size/2, cy = size/2, R = 160, levels = 5;
+  const size = 560, cx = size/2, cy = size/2, R = 170, levels = 5;
 
   container.innerHTML = `<div class="spider-cat">${cat.title}</div>`;
   const ns = 'http://www.w3.org/2000/svg';
@@ -435,7 +433,7 @@ function buildSpider(cat){
 
   // labels
   angles.forEach((a,i)=>{
-    const lr = R + 54;
+    const lr = R + 58;
     const lx = cx + lr*Math.cos(a);
     const ly = cy + lr*Math.sin(a);
     const txt = document.createElementNS(ns,'text');
@@ -527,23 +525,6 @@ function renderMarks(){
 }
 document.getElementById('clearMarks').onclick=()=>{marks=[];renderMarks();};
 
-/* ===== PROGRESS BAR ===== */
-const barFill=document.getElementById('barFill');
-const pctLabel=document.getElementById('pctLabel');
-let surveySubmitted=false;
-function updateProgress(){
-  if(surveySubmitted){
-    barFill.style.width='100%';
-    pctLabel.textContent='100 % complete';
-    return;
-  }
-  const h=document.documentElement;
-  const maxScroll=h.scrollHeight-h.clientHeight;
-  const pct=maxScroll>0 ? Math.min(100,Math.max(0,Math.round(h.scrollTop/maxScroll*100))) : 100;
-  barFill.style.width=pct+'%';
-  pctLabel.textContent=pct+' % complete';
-}
-addEventListener('scroll',updateProgress,{passive:true});
 
 /* ===== SUBMIT ===== */
 document.getElementById('send').onclick=async()=>{
@@ -561,10 +542,7 @@ document.getElementById('send').onclick=async()=>{
     }else{
       console.warn('SCRIPT_URL not set — response logged locally:',data);
     }
-    surveySubmitted=true;
-    barFill.style.width='100%';
-    pctLabel.textContent='100 % complete';
-    document.getElementById('form').style.display='none';
+document.getElementById('form').style.display='none';
     document.querySelector('.submit-row').style.display='none';
     document.getElementById('done').style.display='block';
     scrollTo({top:0,behavior:'smooth'});
