@@ -623,87 +623,59 @@ document.getElementById('clearMarks').onclick=()=>{marks=[];renderMarks();};
 
 
 /* ===== SUBMIT ===== */
-/* Native HTML POST to a hidden iframe: avoids fetch/CORS issues with Apps Script. */
-document.getElementById('send').onclick=()=>{
-  const btn=document.getElementById('send'), err=document.getElementById('err');
-  err.style.display='none';
-  btn.disabled=true;
-  btn.textContent='Sending…';
+document.getElementById('send').onclick = async () => {
+  const btn = document.getElementById('send');
+  const err = document.getElementById('err');
 
-  const data={timestamp:new Date().toISOString(),...answers};
-  new FormData(document.getElementById('form')).forEach((v,k)=>{
-    if(String(v).trim()!=='') data[k]=String(v).trim();
+  err.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  // Build one JSON object containing every answered field.
+  const data = {
+    submission_id: 'TENRON-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10),
+    timestamp: new Date().toISOString(),
+    ...answers
+  };
+
+  // Standard text / number / select / textarea fields.
+  new FormData(document.getElementById('form')).forEach((value, key) => {
+    const clean = String(value).trim();
+    if (clean !== '') data[key] = clean;
   });
-  data.failure_marks=marks.map(m=>`${m.zone} (x=${m.x}, y=${m.y})`).join(' | ');
-  data.failure_zones=[...new Set(marks.map(m=>m.zone))].join('; ');
-  data.submission_id='TENRON-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
 
-  if(!SCRIPT_URL.startsWith('http')){
-    console.error('SCRIPT_URL not set:',data);
-    err.textContent='Submission URL is not configured.';
-    err.style.display='block';
-    btn.disabled=false;
-    btn.textContent='Send my answers';
-    return;
-  }
+  // Stick failure markers.
+  data.failure_marks = marks
+    .map(m => `${m.zone} (x=${m.x}, y=${m.y})`)
+    .join(' | ');
+  data.failure_zones = [...new Set(marks.map(m => m.zone))].join('; ');
 
-  try{
-    const frameName='tenronSubmitFrame';
-    let frame=document.querySelector(`iframe[name="${frameName}"]`);
-    if(!frame){
-      frame=document.createElement('iframe');
-      frame.name=frameName;
-      frame.style.display='none';
-      frame.setAttribute('aria-hidden','true');
-      document.body.appendChild(frame);
-    }
-
-    const postForm=document.createElement('form');
-    postForm.method='POST';
-    postForm.action=SCRIPT_URL;
-    postForm.target=frameName;
-    postForm.style.display='none';
-
-    Object.entries(data).forEach(([key,value])=>{
-      if(value===undefined || value===null) return;
-      const input=document.createElement('input');
-      input.type='hidden';
-      input.name=key;
-      input.value=String(value);
-      postForm.appendChild(input);
+  try {
+    // Apps Script receives this JSON in e.postData.contents.
+    // text/plain + no-cors avoids a CORS preflight while still sending the POST.
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      cache: 'no-store',
+      keepalive: true,
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(data)
     });
 
-    document.body.appendChild(postForm);
+    // The request has been handed to the Web App.
+    document.getElementById('form').style.display = 'none';
+    document.querySelector('.submit-row').style.display = 'none';
+    document.getElementById('done').style.display = 'block';
+    scrollTo({ top: 0, behavior: 'smooth' });
 
-    let submitted=false;
-    let finished=false;
-    const finishSuccess=()=>{
-      if(finished) return;
-      finished=true;
-      document.getElementById('form').style.display='none';
-      document.querySelector('.submit-row').style.display='none';
-      document.getElementById('done').style.display='block';
-      scrollTo({top:0,behavior:'smooth'});
-    };
-
-    const onLoad=()=>{
-      if(submitted) finishSuccess();
-    };
-    frame.addEventListener('load',onLoad,{once:true});
-
-    submitted=true;
-    postForm.submit();
-    postForm.remove();
-
-    /* Safety fallback: Apps Script may redirect inside the hidden iframe. */
-    setTimeout(finishSuccess,5000);
-
-  }catch(e){
-    console.error('Submission error:',e);
-    err.textContent='Something went wrong. Please try again.';
-    err.style.display='block';
-    btn.disabled=false;
-    btn.textContent='Send my answers';
+  } catch (e) {
+    console.error('Survey submission failed:', e);
+    err.textContent = 'Something went wrong. Please check your connection and try again.';
+    err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Send my answers';
   }
 };
 </script>
